@@ -26,14 +26,12 @@ function getPlayerChoice() {
     }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
 
-console.log("Player: " + playerSelection + " vs. Computer: " + computerSelection);
+
 
 function playRound(playerSelection, computerSelection) {
     let winner = "none, it's a draw";
-
+   
     if(playerSelection === computerSelection) {
         winner == "none";
     }else if(playerSelection == "paper" && computerSelection == "rock") {
@@ -54,7 +52,43 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-console.log("The winner is " + playRound(playerSelection,computerSelection));
-// console.log("Computer selection: " + computerSelection + " vs. player selection: " + playerSelection + " the winner is: " + playRound(playerSelection, computerSelection) );
+function game() {
+
+    let playerScores = 0;
+    let computerScores = 0;
+    let round = 1;
+
+    for(let i = 0; i<5; i++) {
+        const playerSelection = getPlayerChoice(); // get player choice
+        const computerSelection = getComputerChoice(); // get a random computer choice
+        let tempWinner = playRound(playerSelection, computerSelection); 
+
+        if(tempWinner == "computer") {
+            computerScores++;
+        }else if(tempWinner == "player") {
+            playerScores++;
+        }else {
+            playerScores = playerScores;
+            computerScores = computerScores;
+        }
+
+        console.log("Player selection: " + playerSelection + " vs.Computer selection: " + computerSelection + "\nWinner of round " + round + ": " + tempWinner);
+        round++;
+    }
+
+    // reports winner or looser at the end
+    let theWinner = "none";
+    if(playerScores == computerScores) {
+        theWinner = "none, it's a draw";
+    } else if(playerScores > computerScores) {
+        theWinner = "player";
+    }else {
+        theWinner = "computer";
+    }
+
+    console.log("Computer scores: " + computerScores + "\nPlayer scores: " + playerScores);
+    return theWinner;
+}
 
 
+console.log("\nWinner of the game is: " + game());
