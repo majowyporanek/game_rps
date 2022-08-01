@@ -34,18 +34,25 @@ function playRound(playerSelection, computerSelection) {
    
     if(playerSelection === computerSelection) {
         winner == "none";
+        console.log("It's a draw");
     }else if(playerSelection == "paper" && computerSelection == "rock") {
         winner = "player";
+        console.log(`You win ${playerSelection} beats ${computerSelection}`);
     }else if(playerSelection == "rock" && computerSelection == "paper"){
-        winner = "computer"
+        winner = "computer";
+        console.log(`You loose ${computerSelection} beats ${playerSelection}`);
     }else if(playerSelection == "scissors" && computerSelection == "paper") {
         winner = "player";
+        console.log(`You win ${playerSelection} beats ${computerSelection}`);
     }else if(playerSelection == "paper" && computerSelection == "scissors") {
         winner = "computer";
+        console.log(`You loose ${computerSelection} beats ${playerSelection}`);
     }else if(playerSelection == "rock" && computerSelection == "scissors") {
         winner = "player";
+        console.log(`You win ${playerSelection} beats ${computerSelection}`);
     }else {
         winner = "computer";
+        console.log(`You loose ${computerSelection} beats ${playerSelection}`);
     }
 
     return winner;
