@@ -1,0 +1,82 @@
+:root {
+    --heading_color: #14202d;
+    --bg_color: #d1e3f6;
+    --paragraph_color: #335171;
+    --button_color: #74aae5;
+    --hover_button: #5b91cb;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+    min-width: 100vh;
+    background-color: var(--bg_color);
+    font-family: "Liberation Mono", "Nimbus Mono L", "FreeMono", "DejaVu Mono", "Bitstream Vera Mono", "Lucida Console", "Andale Mono", "Courier New", monospace;
+
+}
+
+.container {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+h1{
+    margin-bottom: .1em;
+    color:var(--button_color);
+}
+
+.buttons {
+    display: flex;
+    gap: 25px;
+    margin: 1em;
+
+}
+p{
+    margin: 0;
+    padding: 0;
+    font-size: .6em;
+    color: var(--paragraph_color);
+}
+
+button {
+    margin: 0;
+    font-size: .6em;
+    border-radius: 50%;
+    border: none;
+    height: 8em;
+    width: 8em;
+    font-size: .7em;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
+    text-align: center;
+    color: var(--bg_color);
+    background-color: var(--button_color)
+
+}
+
+button:hover {
+    background-color: var(--hover_button);
+    height: 8.2em;
+    width: 8.2em;
+    transition: 0.5s;
+
+}
+
+
+button:active {
+    background-color: var(--paragraph_color);
+}
+.results {
+    font-size: .8em;
+    color: var(--paragraph_color);
+    font-weight: bold;
+}
+
+.weapon {
+    margin-top: 2em;
+}
