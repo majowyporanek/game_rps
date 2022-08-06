@@ -2,6 +2,8 @@
 function getComputerChoice() {
     const options = ["rock", "paper", "scissors"]; // game options
     let randomNum = Math.floor((Math.floor((Math.random() * 100)))/33); // get a random number from 0-2;
+
+    //prevent browser from 'undefined' random choice
     if(randomNum !== "undefined") {
         return options[randomNum];
     }else {
@@ -9,31 +11,41 @@ function getComputerChoice() {
     } // get a random game option
 }
 
-function getPlayerChoice() {
-   
-    let notEnd = true; // a loop will not stop unless notEnd = false;
 
-    while(notEnd) {
-        const choice = prompt("rock, paper or scissors?").toLowerCase(); // ask user to choose his/her answer
-        if(choice == "rock") {
-            notEnd = "false";
-            return choice;
-        } else if(choice == "paper") {
-            notEnd = "false";
-            return choice;
-        } else if (choice === "scissors") {
-            notEnd = "false";
-            return choice;
-        } else {
-            console.log("You typed wrong option. Please enter your choice again.");
-        }
-    }
-}
+
+//GET PLAYER CHOICE FUNCTION - used before I added buttons with choices
+// function getPlayerChoice() {
+   
+//     let notEnd = true; // a loop will not stop unless notEnd = false;
+
+//     while(notEnd) {
+//         const choice = prompt("rock, paper or scissors?").toLowerCase(); // ask user to choose his/her answer
+//         if(choice == "rock") {
+//             notEnd = "false";
+//             return choice;
+//         } else if(choice == "paper") {
+//             notEnd = "false";
+//             return choice;
+//         } else if (choice === "scissors") {
+//             notEnd = "false";
+//             return choice;
+//         } else {
+//             console.log("You typed wrong option. Please enter your choice again.");
+//         }
+//     }
+// }
 
 
 //AUDIO
 let clapping = document.getElementById('clapping');
 let sad = document.getElementById('sad');
+
+// function used while you wait to enable to press buttons again
+function getDuration(audio) {
+    let duration = audio.duration;
+    parseInt(duration);
+    return duration;
+}
 
 
 
@@ -105,13 +117,14 @@ let round = 1;
 
 function disableButtonClick() {
     buttons.forEach((button) => {
-        button.disabled = 'true';
+        button.disabled = true;
     });
 }
 
 function enableButtonClick() {
     buttons.forEach((button)=> {
-        button.disabled = 'false';
+        results.textContent = "TRY AGAIN!";
+        button.disabled = false;
     });
 }
 
@@ -140,34 +153,24 @@ buttons.forEach((button) => {
                 round = 0;
             }else if(computerPoints>playerPoints) {
                 sad.play();
-
-                if (sad.paused == false) {
-                        disableButtonClick();
-                }else {
-                    enableButtonClick();
-                }
+                disableButtonClick(); // cannot play again while audio is playing 
 
                 
-
                 results.textContent = `COMPUTER: ${computerPoints} VS. PLAYER: ${playerPoints}.\r\n You loose! Computer wins`;
                 computerPoints = 0;
                 playerPoints = 0;
                 round = 0;
+                setTimeout(enableButtonClick, (getDuration(sad) - 0.3) * 1000); // cannot play again until music stops 
             }else {
-                clapping.play();
-                //clapping.paused == false
-                if (clapping.currentTime >= 0) {
-                    disableButtonClick();
-                }
-
-                if(clapping.paused == true) {
-                    enableButtonClick();
-                }
+                clapping.play()
+                disableButtonClick(); // cannot play again while audio is playing 
 
                 results.textContent = `COMPUTER: ${computerPoints} VS. PLAYER: ${playerPoints}.\r\n You win! Congratulations`;
                 computerPoints = 0;
                 playerPoints = 0;
                 round = 0;
+                setTimeout(enableButtonClick, (getDuration(clapping) - 0.3) * 1000); // cannot play again until music stops 
+                // enableButtonClick();
             }
         }
 
