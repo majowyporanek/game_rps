@@ -9,21 +9,22 @@
 
 body{
     margin: 0;
-    padding: 0;
+    padding: 3em 0;
     min-width: 100vh;
+    height: auto;
     background-color: var(--bg_color);
     font-family: "Liberation Mono", "Nimbus Mono L", "FreeMono", "DejaVu Mono", "Bitstream Vera Mono", "Lucida Console", "Andale Mono", "Courier New", monospace;
 
 }
 
 .container {
-    display: flex;
+    display: flex;  
     text-align: center;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: fit-content;
-}
+    height: 100%;
+    }
 
 h1{
     margin-bottom: .1em;
