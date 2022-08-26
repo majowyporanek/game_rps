@@ -5,7 +5,11 @@
     --button_color: #74aae5;
     --hover_button: #5b91cb;
 }
-
+html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 2em;
+}
 
 body{
     margin: 0;
